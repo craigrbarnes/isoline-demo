@@ -119,9 +119,9 @@ If everything is correct you should see:
 
 ## Adding Isoline polygon
 
-Now we want to add an isoline using [HERE's Isoline router](https://developer.here.com/documentation/routing/topics/request-isoline.html).
+Now we want to add an isoline using [HERE's Isoline router](https://developer.here.com/documentation/routing/topics/request-isoline.html). A isoline calculates the area that can be reached in a given time or distance. The paramters are a center point and a distance. For example given a coordiante for a city and distance of 4km you can answer the question: what area can I reach by travelling no more than 4km?. There are other parameters to the isoline-router which you can find in the documentation.
 
-Add the following to the *Isoline code section* above
+Lets starts by adding the following to the *Isoline code section* above
 ```javascript
 /// request the isonline
 let url = "https://isoline.route.api.here.com/routing/7.2/calculateisoline.json?" +
@@ -171,18 +171,25 @@ isoline.then(data => {
 });
 ```
 If everything is correct you should see:
+
 ![alt text](img/isoline-map.png)
 
+The isoline router does not return geojson, instead it returns a json strin gof coordinates of lat,lon where geojon needs lon,lat. Hence the map function above converts the json format into geojson. You can change the parameters such as thhe range, range type, and mode of transportation.
+
 ## Display Places within Isoline
+
+Now let do something more analytical. We want to find all places to each within the isoline. The over of this process is to get all places to eat within a radius and then clip them to the isoline. The result will show all palces to eat within 1km of
+downtown Chicago. 
+
 ```javascript
 // Places
 
-// get the places in this case food and drink Places within 3 km
+// get the places in this case food and drink Places within 1 km
 let places_url = "https://places.cit.api.here.com/places/v1/discover/search" +
-    "?in="+center.latitude.toString()+","+center.longitude.toString()+";r=3000"+
-    "&q=food and drink" +
+    "?in="+center.latitude.toString()+","+center.longitude.toString()+";r=1200"+ // note we make the radius a bit bigger
+    "&q=food and drink" + // the category of Place
     "&app_id="+APP_ID+"&app_code="+APP_CODE +
-    "&size=400"; // get a good number of results, default is 20
+    "&size=400"; // get a good number of results, default is 20 which is usually too small
 
 // create the places using turf which is easier than above
 var places =  fetch(places_url)
@@ -196,7 +203,7 @@ var places =  fetch(places_url)
 places.then(pois =>{
     isoline.then(isoline => {
 
-        // clip places by isoline polygon using turf.js
+        // clip places by isoline polygon using the pointsWithingPolygon function of turf.js
         let filtered_places = turf.pointsWithinPolygon(pois, isoline);
         const placesJsonDataProvider = new harp.GeoJsonDataProvider("filtered-places", filtered_places);
         const placesJsonDataSource = new harp.OmvDataSource({
@@ -226,3 +233,5 @@ places.then(pois =>{
 If everything is correct you should see:
 
 ![alt text](img/isoline-places-map.png)
+
+## Wrapping up
