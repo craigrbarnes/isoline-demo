@@ -24,8 +24,8 @@ You need to also create a REST App credentials. Create a Freemium project at [de
 
 In your command line, create a new directory and navigate into it:
 ```
-mkdir harp.gl-tutorial
-cd harp.gl-tutorial
+mkdir iso-line-demo
+cd iso-line-demo
 ```
 Create two files: index.html and index.js:
 ```
