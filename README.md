@@ -174,7 +174,7 @@ If everything is correct you should see:
 
 ![alt text](img/isoline-map.png)
 
-The isoline router does not return geojson, instead it returns a json strin gof coordinates of lat,lon where geojon needs lon,lat. Hence the map function above converts the json format into geojson. You can change the parameters such as thhe range, range type, and mode of transportation.
+The isoline router does not return geojson, instead it returns a json string of coordinates in (lat,lon) where geojon needs (lon,lat). Hence the map function above converts the json format into geojson. You can change the parameters such as the range, range type, and mode of transportation.
 
 ## Display Places within Isoline
 
