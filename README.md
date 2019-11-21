@@ -1,9 +1,8 @@
-# Isoline routing using HLS and harp.gl
+# Isoline routing using HERE Rest APIs and harp.gl
 
-This tutorial combines the harp.gl with HERE's Isoline router which define all reachable area within a certain time and transportation mode.
+This tutorial combines harp.gl with HERE's Isoline router to display places to eat within 1KM of a location in Chicago.
 
-harp.gl is a beta product and we are always looking to improve it with your feedback. For any comments,
- suggestions, or bug reports, we encourage you to create an issue on the harp.gl GitHub repository
+harp.gl is a beta product and we are always looking to improve it with your feedback. For any comments, suggestions, or bug reports, we encourage you to create an issue on the harp.gl GitHub repository
 
 ### Become a HERE Developer
 
@@ -178,7 +177,7 @@ The isoline router does not return geojson, instead it returns a json string of 
 
 ## Display Places within Isoline
 
-Now let do something more analytical. We want to find all places to each within the isoline. The over of this process is to get all places to eat within a radius and then clip them to the isoline. The result will show all palces to eat within 1km of
+Now let do something more analytical. We want to find all places to each within the isoline. A short overview of this process is to get all places to eat within a radius and then clip them to the isoline. The result will show all palces to eat within 1km of
 downtown Chicago. 
 
 ```javascript
@@ -235,3 +234,13 @@ If everything is correct you should see:
 ![alt text](img/isoline-places-map.png)
 
 ## Wrapping up
+
+In a few steps we showed you how to compute places to eat reachable within 1 KM of a location. You have learned:
+ * initialize a basic harp.gl map
+ * Get a polygon from HERE's Isoline router
+ * Get Places to Eat from HERE Places API
+ * Combine the two using turf.js
+
+Try changing some of the isoline parameters, display a list of Places sorted by distance, or combine multiple isolines and place types.
+
+For more location technology and visualization content, follow [@heredev](twitter.com/heredev) on Twitter.
