@@ -236,11 +236,11 @@ If everything is correct you should see:
 ## Wrapping up
 
 In a few steps we showed you how to compute places to eat reachable within 1 KM of a location. You have learned:
- * initialize a basic harp.gl map
+ * Initialize a basic harp.gl map
  * Get a polygon from HERE's Isoline router
  * Get Places to Eat from HERE Places API
  * Combine the two using turf.js
 
 Try changing some of the isoline parameters, display a list of Places sorted by distance, or combine multiple isolines and place types.
 
-For more location technology and visualization content, follow [@heredev](twitter.com/heredev) on Twitter.
+For more location technology and visualization content, follow [@heredev](http://twitter.com/heredev) on Twitter.
