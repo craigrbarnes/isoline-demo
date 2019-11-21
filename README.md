@@ -19,7 +19,7 @@ You'll want to generate a new token. Select the checkbox under READ DATA and the
 
 You need to also create a REST App credentials. Create a Freemium project at [developer.here.com](https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=terms) and select Generate App ID and App Code
 
-### Method 1 Linking a single script bundle to your html (recommended)
+### Linking a single script bundle to your html
 
 In your command line, create a new directory and navigate into it:
 ```
